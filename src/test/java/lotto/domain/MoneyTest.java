@@ -35,4 +35,13 @@ class MoneyTest {
 
         //then: test pass
     }
+
+    @DisplayName("구매 로또 개수를 계산한다")
+    @Test
+    void calculateLottoBoughtCount() {
+        Money money = new Money(2000);
+        int count = 2;
+
+        assertThat(money.calculatePurchaseCount()).isEqualTo(count);
+    }
 }
