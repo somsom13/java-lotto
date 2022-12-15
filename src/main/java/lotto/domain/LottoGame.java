@@ -21,6 +21,12 @@ public class LottoGame {
         this.purchasedLotto = issueAutoLotto();
     }
 
+    public List<List<Integer>> showAllLotto() {
+        return purchasedLotto.stream()
+                .map(Lotto::getSortedLottoNumbers)
+                .collect(Collectors.toList());
+    }
+
     private List<Lotto> issueAutoLotto() {
         return AutoLottoGenerator.issuePurchasedAutoLotto(money.calculatePurchaseCount())
                 .stream()

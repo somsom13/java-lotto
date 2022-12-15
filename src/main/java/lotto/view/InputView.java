@@ -11,6 +11,7 @@ public class InputView {
     }
 
     public int requestMoneyInput() {
+        System.out.println(ViewConstant.MONEY_REQUEST);
         return readSingleNumber(Console.readLine());
     }
 
@@ -33,11 +34,15 @@ public class InputView {
     }
 
     private String readNumbersWithComma(String input) {
-        if (Pattern.matches(LOTTO_REGEX, input)) {
+        if (isContainingRightDelimiter(input)) {
             return input;
         }
         throw new IllegalArgumentException(
                 String.format(ExceptionString.ONLY_COMMA.print(), ViewConstant.LOTTO_DELIMITER));
+    }
+
+    private boolean isContainingRightDelimiter(String input) {
+        return Pattern.matches(LOTTO_REGEX, input) && input.contains(ViewConstant.LOTTO_DELIMITER);
     }
 
 }

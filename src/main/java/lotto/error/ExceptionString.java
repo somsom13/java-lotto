@@ -1,7 +1,7 @@
 package lotto.error;
 
 public enum ExceptionString {
-    HEAD("[ERROR]"),
+    HEAD("[ERROR] "),
     MONEY_LEFT_OVER("잔돈이 발생하였습니다."),
     NOT_ENOUGH_MONEY("%d원 이상 구매해야 합니다."),
     ONLY_NUMBER("숫자만 입력할 수 있습니다."),

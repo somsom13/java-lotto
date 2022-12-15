@@ -1,6 +1,8 @@
 package lotto.domain;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 import lotto.error.ExceptionString;
 
 public class Lotto {
@@ -15,6 +17,10 @@ public class Lotto {
 
     public boolean isBonusInLotto(int bonus) {
         return numbers.contains(bonus);
+    }
+
+    public List<Integer> getSortedLottoNumbers() {
+        return Collections.unmodifiableList(sortNumbers());
     }
 
     private void validateCount(int size) {
@@ -52,5 +58,11 @@ public class Lotto {
                 .distinct()
                 .count();
         return notDuplicatedCount != LottoCondition.COUNT.getValue();
+    }
+
+    private List<Integer> sortNumbers() {
+        return numbers.stream()
+                .sorted()
+                .collect(Collectors.toList());
     }
 }
