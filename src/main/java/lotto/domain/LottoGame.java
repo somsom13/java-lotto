@@ -8,6 +8,7 @@ public class LottoGame {
     private Money money;
     private List<Lotto> purchasedLotto;
     private WinningLotto winningLotto;
+    private LottoResult lottoResult;
 
     public LottoGame() {
     }
@@ -25,6 +26,17 @@ public class LottoGame {
         return purchasedLotto.stream()
                 .map(Lotto::getSortedLottoNumbers)
                 .collect(Collectors.toList());
+    }
+
+    public void calculateLottoResult() {
+        lottoResult = new LottoResult(purchasedLotto.stream()
+                .map(lotto -> transferToPrize(lotto.getLottoNumbers()))
+                .collect(Collectors.toList()));
+    }
+
+    private Prize transferToPrize(List<Integer> purchasedLotto) {
+        return Prize.calculatePrizeToReceive(winningLotto.calculateMatchLottoCount(purchasedLotto),
+                winningLotto.isBonusMatch(purchasedLotto));
     }
 
     private List<Lotto> issueAutoLotto() {

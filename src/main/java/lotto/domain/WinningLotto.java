@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.util.List;
 import lotto.error.ExceptionString;
 
 public class WinningLotto {
@@ -11,6 +12,16 @@ public class WinningLotto {
         validateBonusInRange(bonus);
         validateDuplicateWithLotto(bonus);
         this.bonus = bonus;
+    }
+
+    public int calculateMatchLottoCount(List<Integer> purchasedLotto) {
+        return (int) purchasedLotto.stream()
+                .filter(lotto::isNumberMatch)
+                .count();
+    }
+
+    public boolean isBonusMatch(List<Integer> purchasedLotto) {
+        return purchasedLotto.contains(bonus);
     }
 
     private void validateBonusInRange(int bonus) {

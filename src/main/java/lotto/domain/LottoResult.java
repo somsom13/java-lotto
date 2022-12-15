@@ -1,0 +1,32 @@
+package lotto.domain;
+
+import java.util.EnumMap;
+import java.util.List;
+import java.util.Map;
+
+public class LottoResult {
+    Map<Prize, Integer> prizeWithCount;
+
+    public LottoResult(List<Prize> prizes) {
+        this.prizeWithCount = new EnumMap<Prize, Integer>(Prize.class);
+        mapSamePrize(prizes);
+    }
+
+    public double calculateRateOfReturn(int purchaseMoney) {
+        return (double) calculateTotalAward() / (double) purchaseMoney;
+    }
+    private long calculateTotalAward() {
+        return Prize.calculateTotalPrize(prizeWithCount);
+    }
+
+    private void mapSamePrize(List<Prize> prizes) {
+        prizes.stream()
+                .filter(prize -> prize != Prize.NONE)
+                .forEach(this::updatePrizeCountInMap);
+    }
+
+    private void updatePrizeCountInMap(Prize prize) {
+        int count = prizeWithCount.get(prize) + 1;
+        this.prizeWithCount.put(prize, count);
+    }
+}

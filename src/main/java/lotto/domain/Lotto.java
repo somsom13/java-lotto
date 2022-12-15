@@ -23,6 +23,14 @@ public class Lotto {
         return Collections.unmodifiableList(sortNumbers());
     }
 
+    public List<Integer> getLottoNumbers() {
+        return Collections.unmodifiableList(numbers);
+    }
+
+    public boolean isNumberMatch(int numberToCompare) {
+        return numbers.contains(numberToCompare);
+    }
+
     private void validateCount(int size) {
         if (size != LottoCondition.COUNT.getValue()) {
             throw new IllegalArgumentException(
