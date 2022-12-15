@@ -16,6 +16,10 @@ public class Money {
         return money / MIN_MONEY;
     }
 
+    public int getPurchasedMoney() {
+        return money;
+    }
+
     private void validateLeftMoney(int money) {
         if (isMoneyLeft(money)) {
             throw new IllegalArgumentException(ExceptionString.MONEY_LEFT_OVER.print());

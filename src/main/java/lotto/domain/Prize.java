@@ -45,6 +45,14 @@ public enum Prize {
         return matchCount;
     }
 
+    public int getAward() {
+        return award;
+    }
+
+    public boolean isHasBonus() {
+        return hasBonus;
+    }
+
     private static boolean isBonusMatch(int matchCount, boolean hasBonus) {
         return matchCount == BONUS.matchCount && hasBonus;
     }

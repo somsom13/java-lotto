@@ -3,6 +3,7 @@ package lotto.domain;
 import java.util.List;
 import java.util.stream.Collectors;
 import lotto.AutoLottoGenerator;
+import lotto.dto.PrizeToReceive;
 
 public class LottoGame {
     private Money money;
@@ -32,6 +33,10 @@ public class LottoGame {
         lottoResult = new LottoResult(purchasedLotto.stream()
                 .map(lotto -> transferToPrize(lotto.getLottoNumbers()))
                 .collect(Collectors.toList()));
+    }
+
+    public PrizeToReceive getPrizeInfo() {
+        return PrizeToReceive.of(lottoResult, money.getPurchasedMoney());
     }
 
     private Prize transferToPrize(List<Integer> purchasedLotto) {

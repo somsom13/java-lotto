@@ -21,6 +21,7 @@ public class LottoController {
     public void start() {
         issueUserBoughtLotto(inputView.requestMoneyInput());
         createWinningLotto(inputView.requestWinningLotto());
+        printLottoResult();
     }
 
     private void issueUserBoughtLotto(int money) {
@@ -39,5 +40,10 @@ public class LottoController {
             winningNumbers.add(Integer.parseInt(tokenizer.nextToken()));
         }
         return winningNumbers;
+    }
+
+    private void printLottoResult() {
+        lottoGame.calculateLottoResult();
+        outputView.printPrizeToReceive(lottoGame.getPrizeInfo());
     }
 }
