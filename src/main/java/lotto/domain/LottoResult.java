@@ -16,7 +16,7 @@ public class LottoResult {
     }
 
     public double calculateRateOfReturn(int purchaseMoney) {
-        return (double) calculateTotalAward() / (double) purchaseMoney;
+        return (double) calculateTotalAward() / (double) purchaseMoney * 100;
     }
 
     public Map<Prize, Integer> getResult() {

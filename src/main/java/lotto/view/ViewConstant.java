@@ -13,7 +13,7 @@ public class ViewConstant {
     public static final DecimalFormat MONEY_FORMAT = new DecimalFormat("###,###");
     public static final String BONUS_INCLUDE = ", 보너스 볼 일치";
     public static final String EMPTY_STRING = "";
-    public static final String FINAL_RATE = "총 수익률은 %s입니다.";
+    public static final String FINAL_RATE = "총 수익률은 %s%%입니다.";
     public static final String RATE_OF_RETURN = "%.1f";
     public static final String LOTTO_DELIMITER = ",";
 }
