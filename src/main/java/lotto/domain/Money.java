@@ -12,6 +12,10 @@ public class Money {
         this.money = money;
     }
 
+    public int calculatePurchaseCount() {
+        return money / MIN_MONEY;
+    }
+
     private void validateLeftMoney(int money) {
         if (isMoneyLeft(money)) {
             throw new IllegalArgumentException(ExceptionString.MONEY_LEFT_OVER.print());
