@@ -5,12 +5,20 @@ import java.util.stream.Collectors;
 import lotto.AutoLottoGenerator;
 
 public class LottoGame {
-    private final Money money;
-    private final List<Lotto> purchasedLotto;
+    private Money money;
+    private List<Lotto> purchasedLotto;
+    private WinningLotto winningLotto;
 
-    public LottoGame(int money) {
+    public LottoGame() {
+    }
+
+    public void setWinningLotto(List<Integer> winningNumbers, int bonus) {
+        winningLotto = new WinningLotto(new Lotto(winningNumbers), bonus);
+    }
+
+    public void issueUserAutoLotto(int money) {
         this.money = new Money(money);
-        purchasedLotto = issueAutoLotto();
+        this.purchasedLotto = issueAutoLotto();
     }
 
     private List<Lotto> issueAutoLotto() {

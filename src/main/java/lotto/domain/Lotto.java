@@ -13,6 +13,10 @@ public class Lotto {
         this.numbers = numbers;
     }
 
+    public boolean isBonusInLotto(int bonus) {
+        return numbers.contains(bonus);
+    }
+
     private void validateCount(int size) {
         if (size != LottoCondition.COUNT.getValue()) {
             throw new IllegalArgumentException(
